@@ -37,7 +37,7 @@ class TestMyCreateView:
         req = RequestFactory().post(reverse("myapp:mycreateview"), data=data)
         resp = views.MyCreateView.as_view()(req)
         assert resp.status_code == 302, "Should redirect to success url"
-        assert resp.url == reverse_lazy('myapp:mycreateview')
+        assert resp.url == reverse_lazy('myapp:myview')
         assert MyModel.objects.all().exists()
         assert MyModel.objects.all()[0].name == "Hans"
 
@@ -67,7 +67,7 @@ class TestMyUpdateView:
 
         resp = views.MyUpdateView.as_view()(req, pk=my_model.pk)
         assert resp.status_code == 302, "redirect to success url"
-        assert "%s" % (reverse_lazy('myapp:myupdateview', kwargs={'pk': 1}),) in resp.url
+        assert "%s" % (reverse_lazy('myapp:myview'),) in resp.url
         assert my_model.name == "Dieter"
         my_model.refresh_from_db()
         assert my_model.name == "Hans"

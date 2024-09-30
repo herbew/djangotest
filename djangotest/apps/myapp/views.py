@@ -16,11 +16,11 @@ class MyView(generic.TemplateView):
 class MyCreateView(generic.CreateView):
     model = models.MyModel
     form_class = forms.MyModelForm
-    success_url = reverse_lazy('myapp:mycreateview')
+    success_url = reverse_lazy('myapp:myview')
 
 
 @method_decorator(login_required, name="dispatch")
 class MyUpdateView(generic.UpdateView):
     model = models.MyModel
     form_class = forms.MyModelForm
-    success_url = reverse_lazy('myapp:myupdateview', kwargs={'pk':1})
+    success_url = reverse_lazy('myapp:myview')
