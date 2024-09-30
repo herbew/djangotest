@@ -14,7 +14,7 @@ sudo dpkg-reconfigure locales
 sudo apt-get install -y python3 python3-pip 
 sudo apt-get install -y python3-venv
 
-python3 -m venv envdjangopytest
+python3 -m venv envdjangotest
 
 git clone https://github.com/herbew/djangotest.git
 
