@@ -8,8 +8,8 @@ from djangotest.apps.myapp import views
 app_name = 'myapp'
 
 urlpatterns = [
-    path('mypath/', views.MyView.as_view(), name='myview'),
-    path('create/', views.MyView.as_view(), name='mycreateview'),
-    path('<int:pk>/update/', views.MyUpdateView.as_view(), name='myupdateview'),
+    path('mypath/', view=views.MyView.as_view(), name='myview'),
+    path('create/', view=views.MyView.as_view(), name='mycreateview'),
+    path('<int:pk>/update/', view=views.MyUpdateView.as_view(), name='myupdateview'),
 
 ]
