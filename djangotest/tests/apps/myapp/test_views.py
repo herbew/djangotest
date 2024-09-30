@@ -7,9 +7,9 @@ from django.test import RequestFactory
 from django.urls import reverse
 from mixer.backend.django import mixer
 
-from myapp import views
-from myapp.forms import MyModelForm
-from myapp.models import MyModel
+from djangotest.apps.myapp import views
+from djangotest.apps.myapp.forms import MyModelForm
+from djangotest.apps.myapp.models import MyModel
 
 pytestmark = pytest.mark.django_db
 
