@@ -16,3 +16,7 @@ sudo apt-get install -y python3-venv
 
 python3 -m venv envdjangopytest
 
+git clone https://github.com/herbew/djangotest.git
+
+cd djangotest
+pip install -r requirements.txt

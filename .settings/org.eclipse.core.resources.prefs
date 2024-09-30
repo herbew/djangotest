@@ -6,3 +6,7 @@ encoding//djangotest/apps/myapp/forms.py=utf-8
 encoding//djangotest/apps/myapp/models.py=utf-8
 encoding//djangotest/apps/myapp/urls.py=utf-8
 encoding//djangotest/apps/myapp/views.py=utf-8
+encoding//djangotest/tests/apps/myapp/test_forms.py=utf-8
+encoding//djangotest/tests/apps/myapp/test_helloworld.py=utf-8
+encoding//djangotest/tests/apps/myapp/test_models.py=utf-8
+encoding//djangotest/tests/apps/myapp/test_views.py=utf-8

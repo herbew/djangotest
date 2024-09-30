@@ -6,6 +6,7 @@ from django.utils.decorators import method_decorator
 from django.views import generic
 
 from djangotest.apps.myapp import models, forms
+from django.urls import reverse_lazy
 
 
 class MyView(generic.TemplateView):
@@ -15,11 +16,11 @@ class MyView(generic.TemplateView):
 class MyCreateView(generic.CreateView):
     model = models.MyModel
     form_class = forms.MyModelForm
-    success_url = "/create_success/"
+    success_url = "%s" % reverse_lazy('myapp:myview')
 
 
 @method_decorator(login_required, name="dispatch")
 class MyUpdateView(generic.UpdateView):
     model = models.MyModel
     form_class = forms.MyModelForm
-    success_url = "/update_success/"
+    success_url = "%s" % reverse_lazy('myapp:myview')
