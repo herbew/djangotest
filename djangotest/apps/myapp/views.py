@@ -23,4 +23,4 @@ class MyCreateView(generic.CreateView):
 class MyUpdateView(generic.UpdateView):
     model = models.MyModel
     form_class = forms.MyModelForm
-    success_url = reverse_lazy('myapp:myupdateview')
+    success_url = reverse_lazy('myapp:myupdateview', kwargs={'pk':model.pk})
