@@ -4,7 +4,7 @@ from __future__ import unicode_literals, absolute_import
 import pytest
 from django.contrib.auth.models import AnonymousUser, User
 from django.test import RequestFactory
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from mixer.backend.django import mixer
 
 from djangotest.apps.myapp import views
@@ -37,7 +37,7 @@ class TestMyCreateView:
         req = RequestFactory().post(reverse("myapp:mycreateview"), data=data)
         resp = views.MyCreateView.as_view()(req)
         assert resp.status_code == 302, "Should redirect to success url"
-        assert resp.url == "/create_success/"
+        assert resp.url == reverse_lazy('myapp:mycreateview')
         assert MyModel.objects.all().exists()
         assert MyModel.objects.all()[0].name == "Hans"
 
@@ -67,7 +67,7 @@ class TestMyUpdateView:
 
         resp = views.MyUpdateView.as_view()(req, pk=my_model.pk)
         assert resp.status_code == 302, "redirect to success url"
-        assert "/update_success/" in resp.url
+        assert reverse_lazy('myapp:myupdateview') in resp.url
         assert my_model.name == "Dieter"
         my_model.refresh_from_db()
         assert my_model.name == "Hans"
