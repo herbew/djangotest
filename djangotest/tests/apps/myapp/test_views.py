@@ -67,7 +67,7 @@ class TestMyUpdateView:
 
         resp = views.MyUpdateView.as_view()(req, pk=my_model.pk)
         assert resp.status_code == 302, "redirect to success url"
-        assert reverse_lazy('myapp:myupdateview',kwargs={'pk': 1}) in resp.url
+        assert "%s" % (reverse_lazy('myapp:myupdateview', kwargs={'pk': 1}),) in resp.url
         assert my_model.name == "Dieter"
         my_model.refresh_from_db()
         assert my_model.name == "Hans"
