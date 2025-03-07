@@ -7,6 +7,6 @@ from django.apps import AppConfig
 class MyappAppConfig(AppConfig):
 
     name = "djangotest.apps.myapp"
-    verbose_name = "Myapp"
+    verbose_name = "myapp"
 
     

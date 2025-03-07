@@ -1,0 +1,36 @@
+version: '3'
+
+volumes:
+  djangotest_db:
+    driver: local
+  web:
+
+networks:
+  djangotest-docker:
+    name: djangotest-net
+
+services:
+  web:
+    build: .
+    ports:
+      - 9000:8000
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    command: compose/django/start.sh
+    networks:
+      - djangotest-docker
+
+  db:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=u_djangotest
+      - POSTGRES_PASSWORD=UserNewDBdjangotest
+      - POSTGRES_DB=db_djangotest
+    ports:
+      - 35432:5432
+    volumes:
+      - msp_db:/var/lib/postgresql/data:rw
+    networks:
+      - msp-docker
